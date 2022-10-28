@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FrenDex.Views.AddUpdateFriendPage"
+             x:DataType="viewModels:AddUpdateFriendViewModel"
+             xmlns:models="clr-namespace:FrenDex.Models"
+             xmlns:viewModels="clr-namespace:FrenDex.ViewModels"
+             Title="Editing a Fren">
+    <StackLayout Margin="10" Spacing="15">
+        <VerticalStackLayout>
+            <Label Text="Nickname"  />
+            <Entry Text="{Binding Friend.Nickname}" Placeholder="Nickname" />
+            <BoxView HeightRequest="0.8" Color="Gray" />
+        </VerticalStackLayout>
+
+        <VerticalStackLayout>
+            <Label Text="First Name"  />
+            <Entry Text="{Binding Friend.FirstName}" Placeholder="First Name" />
+            <BoxView HeightRequest="0.8" Color="Gray" />
+        </VerticalStackLayout>
+
+        <VerticalStackLayout>
+            <Label Text="Last Name"  />
+            <Entry Text="{Binding Friend.LastName}" Placeholder="Last Name" />
+            <BoxView HeightRequest="0.8" Color="Gray" />
+        </VerticalStackLayout>
+
+        <VerticalStackLayout>
+            <Label Text="Likes"  />
+            <Entry Text="{Binding Friend.Likes}" Placeholder="Likes" />
+            <BoxView HeightRequest="0.8" Color="Gray" />
+        </VerticalStackLayout>
+        <VerticalStackLayout>
+            <Label Text="Dislikes"  />
+            <Entry Text="{Binding Friend.Dislikes}" Placeholder="Dislikes" />
+            <BoxView HeightRequest="0.8" Color="Gray" />
+        </VerticalStackLayout>
+        <VerticalStackLayout>
+            <Label Text="Favorites"  />
+            <Entry Text="{Binding Friend.Favorites}" Placeholder="Favorites" />
+            <BoxView HeightRequest="0.8" Color="Gray" />
+        </VerticalStackLayout>
+        <VerticalStackLayout>
+            <Label Text="Hates"  />
+            <Entry Text="{Binding Friend.Hates}" Placeholder="Hates" />
+            <BoxView HeightRequest="0.8" Color="Gray" />
+        </VerticalStackLayout>
+        <VerticalStackLayout>
+            <Label Text="Allergies"  />
+            <Entry Text="{Binding Friend.Allergies}" Placeholder="Allergies" />
+            <BoxView HeightRequest="0.8" Color="Gray" />
+        </VerticalStackLayout>
+
+        <Button Text="Save" Command="{Binding AddUpdateFriendAsyncCommand}"/>
+    </StackLayout>
+</ContentPage>

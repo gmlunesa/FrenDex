@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FrenDex.Views.FriendListPage"
+             x:DataType="viewModels:FriendListViewModel"
+             xmlns:models="clr-namespace:FrenDex.Models"
+             xmlns:eventHandlers="clr-namespace:FrenDex.EventHandlers"
+             xmlns:viewModels="clr-namespace:FrenDex.ViewModels"
+             Title="FrenDex">
+    <Grid Padding="12"
+          RowDefinitions="AUTO,*,AUTO">
+        
+        <HorizontalStackLayout>
+            <Label FontFamily="OpenSans-Bold" FontSize="24" Text="Frens" />
+        </HorizontalStackLayout>
+
+        <CollectionView ItemsSource="{Binding Friends}"
+                        Grid.Row="1"
+                        Margin="0,14">
+
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical"
+                                   ItemSpacing="16"/>
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Friend">
+                    <StackLayout Padding="5,10">
+                        <SwipeView>
+                            <SwipeView.LeftItems>
+                                <SwipeItems>
+                                    <SwipeItem Text="❌" Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:FriendListViewModel}},
+                                        Path=TappedDeleteAsyncCommand}" CommandParameter="{Binding .}" BackgroundColor="LightPink"  />
+                                    <!--<SwipeItem IsDestructive="True" Text="Close" BackgroundColor="LightGreen"/>-->
+                                </SwipeItems>
+                                
+                            </SwipeView.LeftItems>
+                        <Frame Padding="0">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer CommandParameter="{Binding .}"
+                                                      Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:FriendListViewModel}}, Path=GoToDetailsCommand}" />
+
+                            </Frame.GestureRecognizers>                                
+                            
+                            <Grid Padding="16"
+                                      RowDefinitions="AUTO,AUTO">
+                                
+                                <Label Text="{Binding Nickname}"
+                                       FontSize="20"
+                                       FontAttributes="Bold"/>
+                                
+                                <HorizontalStackLayout Spacing="8"
+                                                       Grid.Row="1">
+                                    <Label Text="{Binding FirstName}" FontSize="16"/>
+                                    <Label Text="{Binding LastName}" FontSize="16"/>
+                                </HorizontalStackLayout>
+                            </Grid>
+                        </Frame>
+                        </SwipeView>
+
+
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+
+        </CollectionView>
+
+        <Button Text="Add Fren" 
+                Command="{Binding GoToAddUpdateFriendAsyncCommand}"
+                Grid.Row="2"/>
+
+    </Grid>
+</ContentPage>
