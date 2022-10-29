@@ -20,6 +20,7 @@ namespace FrenDex.Models
         public string Favorites { get; set; }
         public string Hates { get; set; }
         public string Allergies { get; set; }
+        public Uri Avatar { get; set; }
         [Ignore]
         public string FullName => $"{FirstName} {LastName}";
     }

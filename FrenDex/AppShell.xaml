@@ -5,7 +5,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:FrenDex"
     xmlns:views="clr-namespace:FrenDex.Views"
-    Shell.FlyoutBehavior="Disabled">
+    Shell.FlyoutBehavior="Disabled"
+    BackgroundColor="{StaticResource PageBackgroundColor}">
 
     <ShellContent
         Title="Home"

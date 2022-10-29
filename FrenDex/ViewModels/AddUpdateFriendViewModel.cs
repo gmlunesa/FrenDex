@@ -45,13 +45,14 @@ namespace FrenDex.ViewModels
                         Dislikes = Friend.Dislikes,
                         Favorites = Friend.Favorites,
                         Hates = Friend.Hates,
-                        Allergies = Friend.Allergies
+                        Allergies = Friend.Allergies,
+                        Avatar = new Uri($"https://ui-avatars.com/api/?background=random&name={Friend.Nickname}")
                     });
                 }
 
                 if (response > 0)
                 {
-                    await Shell.Current.DisplayAlert("Success!", "Successfully saved.", "OK");
+                    await Shell.Current.DisplayAlert("Success!", "Congrats on making a fren.", "OK");
                     await Shell.Current.GoToAsync("../..");
                 }
                 else

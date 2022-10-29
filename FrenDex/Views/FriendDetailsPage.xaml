@@ -5,14 +5,127 @@
              xmlns:viewModels="clr-namespace:FrenDex.ViewModels"
              x:DataType="viewModels:FriendDetailsViewModel"
              Title="FriendDetailsPage">
-    <VerticalStackLayout>
-        <Label Text="{Binding Friend.FirstName}" FontSize="Medium"/>
-        <Label Text="{Binding Friend.LastName}" FontSize="Medium"/>
-        <Label Text="{Binding Friend.Nickname}" FontSize="Medium"/>
-        <Label Text="{Binding Friend.Likes}" FontSize="Medium"/>
-        <Label Text="{Binding Friend.Dislikes}" FontSize="Medium"/>
-        <Button Text="Edit Student" Command="{Binding TapEditAsyncCommand}" CommandParameter="{Binding Friend}" HorizontalOptions="FillAndExpand" />
-        <Button Text="Delete Student" Command="{Binding TapDeleteAsyncCommand}" CommandParameter="{Binding Friend}" HorizontalOptions="FillAndExpand" />
+    <Shell.TitleView>
+        <Label Text="" Style="{StaticResource PageHeaderStyle}" TextColor="White" IsVisible="False"/>
+    </Shell.TitleView>
 
-    </VerticalStackLayout>
+    <Grid
+        Margin="24,12,24,0"
+        IgnoreSafeArea="{OnPlatform Android=False, iOS=True}"
+        ColumnDefinitions="*,*"
+        RowDefinitions="*,Auto">
+
+
+        <ScrollView
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            HorizontalScrollBarVisibility="Never"
+            VerticalScrollBarVisibility="Never"
+            Margin="0,0,0,0">
+
+            <VerticalStackLayout
+                    Spacing="18">
+
+                <Image
+                    WidthRequest="100"
+                    HeightRequest="100"
+                    Source="{Binding Friend.Avatar}">
+                    <Image.Clip>
+                        <EllipseGeometry
+                            Center="50,50"
+                            RadiusX="50"
+                            RadiusY="50"/>
+                    </Image.Clip>
+                </Image>
+
+                <Label Style="{StaticResource DetailsHeaderStyle}"
+                       Text="{Binding Friend.Nickname}"
+                       Margin="0,0,0,0"/>
+
+                <Label Margin="0"
+                       Style="{StaticResource DetailsHeaderSubtitleStyle}"
+                       Text="{Binding Friend.FullName}" />
+
+                <Rectangle HorizontalOptions="Fill"
+                           HeightRequest="2"
+                           Stroke="Transparent"
+                           Fill="{StaticResource LightBorderColor}" />
+
+
+                <Label Margin="0"
+                       Style="{StaticResource DetailsHeaderSubtitleStyle}"
+                       Text="💖" />
+
+                <Label Style="{StaticResource DetailsTextStyle}"
+                       LineBreakMode="WordWrap"
+                       Text="{Binding Friend.Favorites}" />
+
+                <Label Margin="0"
+                       Style="{StaticResource DetailsHeaderSubtitleStyle}"
+                       Text="👍" />
+
+                <Label Style="{StaticResource DetailsTextStyle}"
+                       LineBreakMode="WordWrap"
+                       Text="{Binding Friend.Likes}" />
+
+                <Rectangle HorizontalOptions="Fill"
+                           HeightRequest="1"
+                           Stroke="Transparent"
+                           Fill="{StaticResource LightBorderColor}" />
+
+                <Label Margin="0"
+                       Style="{StaticResource DetailsHeaderSubtitleStyle}"
+                       Text="💢" />
+
+                <Label Style="{StaticResource DetailsTextStyle}" 
+                       LineBreakMode="WordWrap"
+                       Text="{Binding Friend.Hates}" />
+
+                <Label Margin="0"
+                       Style="{StaticResource DetailsHeaderSubtitleStyle}"
+                       Text="👎" />
+
+                <Label Style="{StaticResource DetailsTextStyle}"
+                       LineBreakMode="WordWrap"
+                       Text="{Binding Friend.Dislikes}" />
+
+                <Rectangle HorizontalOptions="Fill"
+                           HeightRequest="1"
+                           Stroke="Transparent"
+                           Fill="{StaticResource LightBorderColor}" />
+
+                <Label Margin="0"
+                       Style="{StaticResource DetailsHeaderSubtitleStyle}" 
+                       Text="🤧" />
+
+                <Label Style="{StaticResource DetailsTextStyle}"
+                       LineBreakMode="WordWrap"
+                       Text="{Binding Friend.Allergies}" />
+
+            </VerticalStackLayout>
+
+        </ScrollView>
+
+        <Grid VerticalOptions="End"
+              HorizontalOptions="FillAndExpand"
+              ColumnDefinitions="*, *"
+              Grid.Row="1"
+              Grid.ColumnSpan="2">
+
+            <Button Grid.Column="0" 
+                    Text="Edit" 
+                    Margin="0,5,5,10" 
+                    Style="{StaticResource ButtonStyle}"
+                    Command="{Binding TapEditAsyncCommand}" 
+                    CommandParameter="{Binding Friend}" />
+
+            <Button Grid.Column="1" 
+                    Text="Delete" 
+                    Margin="5,5,0,10"
+                    Style="{StaticResource ButtonStyle}"
+                    Command="{Binding TapDeleteAsyncCommand}" 
+                    CommandParameter="{Binding Friend}" />
+        </Grid>
+    </Grid>
 </ContentPage>

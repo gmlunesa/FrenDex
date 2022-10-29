@@ -8,73 +8,119 @@
              xmlns:viewModels="clr-namespace:FrenDex.ViewModels"
              Title="FrenDex">
 
+    <Shell.TitleView>
+        <Label Text="Frendex" Style="{StaticResource PageHeaderStyle}" TextColor="White" IsVisible="False"/>
+    </Shell.TitleView>
+    
     <Shell.SearchHandler>
         <eventHandlers:FriendSearchEventHandler
             Placeholder="Search a Fren"
             ShowsResults="True"
             SearchBoxVisibility="Collapsible"
             NavigationRoute="FriendDetailsPage"
-            Friends="{x:Static viewModels:FriendListViewModel.FriendsSearchable}">
+            Friends="{x:Static viewModels:FriendListViewModel.FriendsSearchable}"
+            BackgroundColor="{StaticResource CardBackgroundColor}"
+            PlaceholderColor="{StaticResource LightAccentColor}"
+            TextColor="{StaticResource LightTextColor}">
             <eventHandlers:FriendSearchEventHandler.ItemTemplate>
                 <DataTemplate x:DataType="models:Friend">
-                    <Label Text="{Binding Nickname}" FontSize="17" HorizontalTextAlignment="Start" VerticalTextAlignment="Start"/>
+                    <Grid Padding="10"
+                          ColumnDefinitions="0.15*,0.85*"
+                          BackgroundColor="{StaticResource PageBackgroundColor}"
+                          Opacity="0.6">
+                        <Image Source="{Binding Avatar}"
+                               HeightRequest="40"
+                               WidthRequest="40">
+                            <Image.Clip>
+                                <EllipseGeometry
+                                    Center="20,20"
+                                    RadiusX="20"
+                                    RadiusY="20"/>
+                            </Image.Clip>
+                        </Image>
+                        
+                        <VerticalStackLayout Grid.Column="1" Margin="10,0,0,0">
+                            <Label Text="{Binding Nickname}"
+                                   VerticalOptions="Center"
+                                   Style="{StaticResource FormLabelTextStyle}"/>
+                            <Label Text="{Binding FullName}"
+                                   VerticalOptions="Center"
+                                   Style="{StaticResource FormCaptionTextStyle}"/>
+                        </VerticalStackLayout>
+                    </Grid>
                 </DataTemplate>
             </eventHandlers:FriendSearchEventHandler.ItemTemplate>
         </eventHandlers:FriendSearchEventHandler>
     </Shell.SearchHandler>
-    
-    <Grid Padding="12"
-          RowDefinitions="AUTO,*,AUTO">
-        
-        <HorizontalStackLayout>
-            <Label FontFamily="OpenSans-Bold" FontSize="24" Text="Frens" />
-        </HorizontalStackLayout>
 
-        <CollectionView ItemsSource="{Binding Friends}"
-                        Grid.Row="1"
-                        Margin="0,14">
+    <Grid Padding="12, 4"
+          RowDefinitions="Auto,*">
+        <VerticalStackLayout Spacing="4"
+                             Grid.Row="0"
+                             VerticalOptions="Center">
+
+            <Label Style="{StaticResource PageHeaderStyle}"
+                   Text="FrenDex"/>
+
+            <Label Style="{StaticResource PageHeaderSubtitleStyle}"
+                   Text="Remembering the important details ✨"/>
+
+        </VerticalStackLayout>
+        <ScrollView Grid.Row="1" 
+                    HorizontalScrollBarVisibility="Never"
+                    VerticalScrollBarVisibility="Never"
+                    Margin="0,10,0,0">
+            <CollectionView ItemsSource="{Binding Friends}"
+                            Margin="0">
 
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout Orientation="Vertical"
-                                   ItemSpacing="16"/>
+                                   ItemSpacing="5"/>
             </CollectionView.ItemsLayout>
 
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="models:Friend">
-                    <StackLayout Padding="5,10">
-                        <Frame Padding="0">
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer CommandParameter="{Binding .}"
-                                                      Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:FriendListViewModel}}, Path=GoToDetailsCommand}" />
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Friend">
+                        <StackLayout Padding="5,10">
+                            <Border StrokeThickness="0" 
+                                    StrokeShape="RoundRectangle 20"
+                                    HeightRequest="80" 
+                                    BackgroundColor="{StaticResource CardBackgroundColor}">
 
-                            </Frame.GestureRecognizers>
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer CommandParameter="{Binding .}"
+                                                          Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:FriendListViewModel}}, Path=GoToDetailsCommand}" />
 
-                            <Grid Padding="16"
-                                      RowDefinitions="AUTO,AUTO">
+                                </Border.GestureRecognizers>
+                                <Grid RowDefinitions="60" 
+                                      ColumnDefinitions="Auto,*,Auto"
+                                      Padding="15,0,15,0" 
+                                      VerticalOptions="Center">
+                                    <VerticalStackLayout Grid.Column="0" 
+                                                         VerticalOptions="Center" 
+                                                         Spacing="4">
+                                        <Label Text="{Binding Nickname}" 
+                                               Style="{StaticResource CardHeaderStyle}" />
+                                        <Label Text="{Binding FullName}" 
+                                               Style="{StaticResource CardHeaderSubtitleStyle}" />
+                                    </VerticalStackLayout>
+                                    <Image Grid.Column="2" 
+                                           Source="arrow_right.svg" 
+                                           HeightRequest="18" />
+                                </Grid>
+                            </Border>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
 
-                                <Label Text="{Binding Nickname}"
-                                       FontSize="20"
-                                       FontAttributes="Bold"/>
-
-                                <HorizontalStackLayout Spacing="8"
-                                                       Grid.Row="1">
-                                    <Label Text="{Binding FirstName}" FontSize="16"/>
-                                    <Label Text="{Binding LastName}" FontSize="16"/>
-                                </HorizontalStackLayout>
-                            </Grid>
-                        </Frame>
-
-
-                    </StackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-
-
-        </CollectionView>
-
-        <Button Text="Add Fren" 
+        <Button HorizontalOptions="End"
+                VerticalOptions="End"
+                BackgroundColor="{StaticResource ButtonBackgroundColor}"
                 Command="{Binding GoToAddUpdateFriendAsyncCommand}"
-                Grid.Row="2"/>
-
+                Margin="10"
+                Style="{StaticResource ButtonStyle}"
+                Grid.Row="1"
+                Text="Add"/>
     </Grid>
 </ContentPage>

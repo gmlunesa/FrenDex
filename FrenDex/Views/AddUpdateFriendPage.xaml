@@ -6,51 +6,90 @@
              xmlns:models="clr-namespace:FrenDex.Models"
              xmlns:viewModels="clr-namespace:FrenDex.ViewModels"
              Title="Editing a Fren">
-    <StackLayout Margin="10" Spacing="15">
-        <VerticalStackLayout>
-            <Label Text="Nickname"  />
-            <Entry Text="{Binding Friend.Nickname}" Placeholder="Nickname" />
-            <BoxView HeightRequest="0.8" Color="Gray" />
-        </VerticalStackLayout>
+    <Shell.TitleView>
+        <Label Text="" Style="{StaticResource PageHeaderStyle}" TextColor="White" IsVisible="False"/>
+    </Shell.TitleView>
 
-        <VerticalStackLayout>
-            <Label Text="First Name"  />
-            <Entry Text="{Binding Friend.FirstName}" Placeholder="First Name" />
-            <BoxView HeightRequest="0.8" Color="Gray" />
-        </VerticalStackLayout>
+    <ScrollView VerticalScrollBarVisibility="Never">
+        <StackLayout Spacing="15"
+                     Margin="20,5">
+            <VerticalStackLayout>
+                <Label Text="Nickname" Style="{StaticResource FormLabelTextStyle}"/>
+                <Label Text="Must be unique." Style="{StaticResource FormCaptionTextStyle}" />
+                <Entry Text="{Binding Friend.Nickname}" Placeholder="Nickname" Style="{StaticResource EntryStyle}"/>
+            </VerticalStackLayout>
 
-        <VerticalStackLayout>
-            <Label Text="Last Name"  />
-            <Entry Text="{Binding Friend.LastName}" Placeholder="Last Name" />
-            <BoxView HeightRequest="0.8" Color="Gray" />
-        </VerticalStackLayout>
+            <VerticalStackLayout>
+                <Label Text="First Name" 
+                       Style="{StaticResource FormLabelTextStyle}"/>
+                <Entry Text="{Binding Friend.FirstName}" 
+                       Placeholder="First Name" 
+                       Style="{StaticResource EntryStyle}" />
+            </VerticalStackLayout>
 
-        <VerticalStackLayout>
-            <Label Text="Likes"  />
-            <Entry Text="{Binding Friend.Likes}" Placeholder="Likes" />
-            <BoxView HeightRequest="0.8" Color="Gray" />
-        </VerticalStackLayout>
-        <VerticalStackLayout>
-            <Label Text="Dislikes"  />
-            <Entry Text="{Binding Friend.Dislikes}" Placeholder="Dislikes" />
-            <BoxView HeightRequest="0.8" Color="Gray" />
-        </VerticalStackLayout>
-        <VerticalStackLayout>
-            <Label Text="Favorites"  />
-            <Entry Text="{Binding Friend.Favorites}" Placeholder="Favorites" />
-            <BoxView HeightRequest="0.8" Color="Gray" />
-        </VerticalStackLayout>
-        <VerticalStackLayout>
-            <Label Text="Hates"  />
-            <Entry Text="{Binding Friend.Hates}" Placeholder="Hates" />
-            <BoxView HeightRequest="0.8" Color="Gray" />
-        </VerticalStackLayout>
-        <VerticalStackLayout>
-            <Label Text="Allergies"  />
-            <Entry Text="{Binding Friend.Allergies}" Placeholder="Allergies" />
-            <BoxView HeightRequest="0.8" Color="Gray" />
-        </VerticalStackLayout>
+            <VerticalStackLayout>
+                <Label Text="Last Name" 
+                       Style="{StaticResource FormLabelTextStyle}"/>
+                <Entry Text="{Binding Friend.LastName}" 
+                       Placeholder="Last Name" 
+                       Style="{StaticResource EntryStyle}" />
+            </VerticalStackLayout>
 
-        <Button Text="Save" Command="{Binding AddUpdateFriendAsyncCommand}"/>
-    </StackLayout>
+            <VerticalStackLayout>
+                <Label Text="Favorites" 
+                       Style="{StaticResource FormLabelTextStyle}"/>
+                <Label Text="Please separate by comma." 
+                       Style="{StaticResource FormCaptionTextStyle}" />
+                <Editor Text="{Binding Friend.Favorites}" 
+                        Placeholder="💖 Loves" 
+                        Style="{StaticResource EditorStyle}" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout>
+                <Label Text="Likes" 
+                       Style="{StaticResource FormLabelTextStyle}"/>
+                <Label Text="Please separate by comma." 
+                       Style="{StaticResource FormCaptionTextStyle}" />
+                <Editor Text="{Binding Friend.Likes}" 
+                        Placeholder="👍 Likes" 
+                        Style="{StaticResource EditorStyle}" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout>
+                <Label Text="Hates" 
+                       Style="{StaticResource FormLabelTextStyle}"/>
+                <Label Text="Please separate by comma." 
+                       Style="{StaticResource FormCaptionTextStyle}" />
+                <Editor Text="{Binding Friend.Hates}" 
+                        Placeholder="💢 Hates" 
+                        Style="{StaticResource EditorStyle}" />
+            </VerticalStackLayout>
+        
+            <VerticalStackLayout>
+                <Label Text="Dislikes" 
+                       Style="{StaticResource FormLabelTextStyle}"/>
+                <Label Text="Please separate by comma." 
+                       Style="{StaticResource FormCaptionTextStyle}" />
+                <Editor Text="{Binding Friend.Dislikes}" 
+                        Placeholder="👎 Dislikes" 
+                        Style="{StaticResource EditorStyle}" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout>
+                <Label Text="Allergies" 
+                       Style="{StaticResource FormLabelTextStyle}"/>
+                <Label Text="Please separate by comma." 
+                       Style="{StaticResource FormCaptionTextStyle}" />
+                <Editor Text="{Binding Friend.Allergies}" 
+                        Placeholder="🤧 Allergies" 
+                        Style="{StaticResource EditorStyle}" />
+            </VerticalStackLayout>
+        
+            <Button Text="Save" 
+                    Style="{StaticResource ButtonStyle}" 
+                    Command="{Binding AddUpdateFriendAsyncCommand}" />
+        </StackLayout>
+    </ScrollView>
+    
+    
 </ContentPage>

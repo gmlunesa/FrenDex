@@ -4,11 +4,161 @@
              xmlns:local="clr-namespace:FrenDex"
              x:Class="FrenDex.App">
     <Application.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
-                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
+
+        <!-- Colors -->
+        <Color x:Key="PageBackgroundColor">#2e163b</Color>
+        <Color x:Key="CardBackgroundColor">#3d214b</Color>
+        <Color x:Key="LightBackgroundColor">#552f69</Color>
+        <Color x:Key="ButtonBackgroundColor">#F43F5E</Color>
+        <Color x:Key="BorderColor">Transparent</Color>
+        <Color x:Key="LightBorderColor">#d5d5d5</Color>
+        <Color x:Key="LightAccentColor">#725e7d</Color>
+        <Color x:Key="DarkAccentColor">#584463</Color>
+        <Color x:Key="LightTextColor">#d5d5d5</Color>
+        <Color x:Key="DarkTextColor">#252525</Color>
+
+        <!-- Content Page Style -->
+        <Style TargetType="ContentPage" ApplyToDerivedTypes="True">
+            <Setter Property="NavigationPage.HasNavigationBar" Value="False" />
+            <Setter Property="BackgroundColor" Value="{StaticResource PageBackgroundColor}" />
+            <Setter Property="Padding" Value="0"/>
+        </Style>
+
+        <!-- Nav Page -->
+        <Style TargetType="NavigationPage" ApplyToDerivedTypes="True">
+            <Setter Property="BackgroundColor" Value="{StaticResource PageBackgroundColor}" />
+        </Style>
+
+        <!-- Grid Styles -->
+        <Style TargetType="Grid">
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="Margin" Value="0" />
+            <Setter Property="RowSpacing" Value="0" />
+            <Setter Property="ColumnSpacing" Value="0" />
+            <Setter Property="VerticalOptions" Value="Fill" />
+            <Setter Property="HorizontalOptions" Value="Fill" />
+            <Setter Property="BackgroundColor" Value="Transparent" />
+        </Style>
+
+        <!-- CollectionView Styles -->
+        <Style TargetType="CollectionView" ApplyToDerivedTypes="True">
+            <Setter Property="Margin" Value="0" />
+            <Setter Property="ItemSizingStrategy" Value="MeasureFirstItem" />
+            <Setter Property="VerticalOptions" Value="Fill" />
+            <Setter Property="HorizontalOptions" Value="Fill" />
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="VerticalScrollBarVisibility" Value="Never" />
+            <Setter Property="HorizontalScrollBarVisibility" Value="Never" />
+            <Setter Property="SelectionMode" Value="None" />
+        </Style>
+
+        <!-- Button Styles -->
+        <Style TargetType="Button" x:Key="ButtonStyle">
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="HeightRequest" Value="52" />
+            <Setter Property="Padding" Value="15" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="FontFamily" Value="MediumFont" />
+            <Setter Property="CornerRadius" Value="14" />
+            <Setter Property="BackgroundColor" Value="{StaticResource ButtonBackgroundColor}" />
+            <Setter Property="BorderWidth" Value="0" />
+            <Setter Property="BorderColor" Value="{StaticResource BorderColor}" />
+        </Style>
+
+
+        <!-- Label Styles -->
+        <Style TargetType="Label" x:Key="BaseBoldLabelStyle">
+            <Setter Property="LineBreakMode" Value="TailTruncation" />
+            <Setter Property="FontAutoScalingEnabled" Value="False" />
+            <Setter Property="FontFamily" Value="BoldFont" />
+        </Style>
+
+        <Style TargetType="Label" x:Key="BaseMediumLabelStyle">
+            <Setter Property="LineBreakMode" Value="TailTruncation" />
+            <Setter Property="FontAutoScalingEnabled" Value="False" />
+            <Setter Property="FontFamily" Value="MediumFont" />
+        </Style>
+
+        <Style TargetType="Label" x:Key="BaseRegularLabelStyle">
+            <Setter Property="LineBreakMode" Value="TailTruncation" />
+            <Setter Property="FontAutoScalingEnabled" Value="False" />
+            <Setter Property="FontFamily" Value="RegularFont" />
+        </Style>
+
+        <Style TargetType="Label" x:Key="PageHeaderStyle" BasedOn="{StaticResource BaseBoldLabelStyle}">
+            <Setter Property="FontSize" Value="32" />
+            <Setter Property="TextColor" Value="White" />
+        </Style>
+
+        <Style TargetType="Label" x:Key="PageHeaderSubtitleStyle" BasedOn="{StaticResource BaseMediumLabelStyle}">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="TextColor" Value="{StaticResource LightTextColor}" />
+        </Style>
+
+        <Style TargetType="Label" x:Key="PageSubHeaderStyle" BasedOn="{StaticResource BaseMediumLabelStyle}">
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="TextColor" Value="{StaticResource LightTextColor}" />
+        </Style>
+
+        <Style TargetType="Label" x:Key="MenuLabelStyle" BasedOn="{StaticResource BaseRegularLabelStyle}">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="TextColor" Value="#CCCCCC" />
+        </Style>
+
+        <Style TargetType="Label" x:Key="CardHeaderStyle" BasedOn="{StaticResource BaseMediumLabelStyle}">
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="TextColor" Value="{StaticResource LightTextColor}" />
+        </Style>
+
+        <Style TargetType="Label" x:Key="CardHeaderSubtitleStyle" BasedOn="{StaticResource BaseRegularLabelStyle}">
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="TextColor" Value="{StaticResource LightTextColor}" />
+        </Style>
+
+        <Style TargetType="Label" x:Key="DetailsHeaderStyle" BasedOn="{StaticResource BaseBoldLabelStyle}">
+            <Setter Property="FontSize" Value="48" />
+            <Setter Property="TextColor" Value="{StaticResource LightTextColor}" />
+        </Style>
+
+        <Style TargetType="Label" x:Key="DetailsHeaderSubtitleStyle" BasedOn="{StaticResource BaseRegularLabelStyle}">
+            <Setter Property="FontSize" Value="22" />
+            <Setter Property="TextColor" Value="{StaticResource LightTextColor}" />
+        </Style>
+
+        <Style TargetType="Label" x:Key="DetailsTextStyle" BasedOn="{StaticResource BaseRegularLabelStyle}">
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="TextColor" Value="{StaticResource LightTextColor}" />
+        </Style>
+
+        <Style TargetType="Label" x:Key="FormLabelTextStyle" BasedOn="{StaticResource BaseMediumLabelStyle}">
+            <Setter Property="FontSize" Value="Medium" />
+            <Setter Property="TextColor" Value="{StaticResource LightTextColor}" />
+        </Style>
+
+        <Style TargetType="Label" x:Key="FormCaptionTextStyle" BasedOn="{StaticResource BaseMediumLabelStyle}">
+            <Setter Property="FontSize" Value="Caption" />
+            <Setter Property="TextColor" Value="{StaticResource LightAccentColor}" />
+        </Style>
+
+        <!--Entry Styles-->
+        <Style TargetType="Entry" x:Key="EntryStyle">
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="TextColor" Value="{StaticResource LightTextColor}" />
+            <Setter Property="PlaceholderColor" Value="{StaticResource DarkAccentColor}" />
+            <Setter Property="FontFamily" Value="RegularFont"/>
+            <Setter Property="FontSize" Value="Subtitle" />
+        </Style>
+
+        <Style TargetType="Editor" x:Key="EditorStyle">
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="TextColor" Value="{StaticResource LightTextColor}" />
+            <Setter Property="PlaceholderColor" Value="{StaticResource DarkAccentColor}" />
+            <Setter Property="FontFamily" Value="RegularFont"/>
+            <Setter Property="FontSize" Value="Subtitle" />
+            <Setter Property="HeightRequest" Value="100" />
+            <Setter Property="MinimumWidthRequest" Value="350" />
+            <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+        </Style>
+
     </Application.Resources>
 </Application>
