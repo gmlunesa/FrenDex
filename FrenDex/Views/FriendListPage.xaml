@@ -7,6 +7,22 @@
              xmlns:eventHandlers="clr-namespace:FrenDex.EventHandlers"
              xmlns:viewModels="clr-namespace:FrenDex.ViewModels"
              Title="FrenDex">
+
+    <Shell.SearchHandler>
+        <eventHandlers:FriendSearchEventHandler
+            Placeholder="Search a Fren"
+            ShowsResults="True"
+            SearchBoxVisibility="Collapsible"
+            NavigationRoute="FriendDetailsPage"
+            Friends="{x:Static viewModels:FriendListViewModel.FriendsSearchable}">
+            <eventHandlers:FriendSearchEventHandler.ItemTemplate>
+                <DataTemplate x:DataType="models:Friend">
+                    <Label Text="{Binding Nickname}" FontSize="17" HorizontalTextAlignment="Start" VerticalTextAlignment="Start"/>
+                </DataTemplate>
+            </eventHandlers:FriendSearchEventHandler.ItemTemplate>
+        </eventHandlers:FriendSearchEventHandler>
+    </Shell.SearchHandler>
+    
     <Grid Padding="12"
           RowDefinitions="AUTO,*,AUTO">
         
@@ -26,29 +42,20 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Friend">
                     <StackLayout Padding="5,10">
-                        <SwipeView>
-                            <SwipeView.LeftItems>
-                                <SwipeItems>
-                                    <SwipeItem Text="❌" Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:FriendListViewModel}},
-                                        Path=TappedDeleteAsyncCommand}" CommandParameter="{Binding .}" BackgroundColor="LightPink"  />
-                                    <!--<SwipeItem IsDestructive="True" Text="Close" BackgroundColor="LightGreen"/>-->
-                                </SwipeItems>
-                                
-                            </SwipeView.LeftItems>
                         <Frame Padding="0">
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer CommandParameter="{Binding .}"
                                                       Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:FriendListViewModel}}, Path=GoToDetailsCommand}" />
 
-                            </Frame.GestureRecognizers>                                
-                            
+                            </Frame.GestureRecognizers>
+
                             <Grid Padding="16"
                                       RowDefinitions="AUTO,AUTO">
-                                
+
                                 <Label Text="{Binding Nickname}"
                                        FontSize="20"
                                        FontAttributes="Bold"/>
-                                
+
                                 <HorizontalStackLayout Spacing="8"
                                                        Grid.Row="1">
                                     <Label Text="{Binding FirstName}" FontSize="16"/>
@@ -56,7 +63,6 @@
                                 </HorizontalStackLayout>
                             </Grid>
                         </Frame>
-                        </SwipeView>
 
 
                     </StackLayout>

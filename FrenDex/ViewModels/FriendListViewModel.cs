@@ -55,27 +55,6 @@ namespace FrenDex.ViewModels
             }
         }
 
-        [RelayCommand]
-        public async void TappedDeleteAsync(Friend friend)
-        {
-            if (friend is null)
-                return;
-
-            try
-            {
-                var response = await _friendRepository.DeleteAsync(friend);
-
-                if (response > 0)
-                    GetFriendListAsync();
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex);
-                await Shell.Current.DisplayAlert("Oops!", "Unable to delete the friend.", "OK");
-            }
-        }
-
-
         #region Navigation Commands
         [RelayCommand]
         public async void GoToAddUpdateFriendAsync()
