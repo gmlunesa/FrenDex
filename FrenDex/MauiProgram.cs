@@ -25,10 +25,12 @@ public static class MauiProgram
         // Views
         builder.Services.AddSingleton<FriendListPage>();
 		builder.Services.AddTransient<AddUpdateFriendPage>();
+		builder.Services.AddTransient<FriendDetailsPage>();
 
         // ViewModels
         builder.Services.AddSingleton<FriendListViewModel>();
 		builder.Services.AddTransient<AddUpdateFriendViewModel>();
+		builder.Services.AddTransient<FriendDetailsViewModel>();
 
         #endregion
 

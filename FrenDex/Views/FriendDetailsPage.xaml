@@ -2,11 +2,17 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FrenDex.Views.FriendDetailsPage"
+             xmlns:viewModels="clr-namespace:FrenDex.ViewModels"
+             x:DataType="viewModels:FriendDetailsViewModel"
              Title="FriendDetailsPage">
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <Label Text="{Binding Friend.FirstName}" FontSize="Medium"/>
+        <Label Text="{Binding Friend.LastName}" FontSize="Medium"/>
+        <Label Text="{Binding Friend.Nickname}" FontSize="Medium"/>
+        <Label Text="{Binding Friend.Likes}" FontSize="Medium"/>
+        <Label Text="{Binding Friend.Dislikes}" FontSize="Medium"/>
+        <Button Text="Edit Student" Command="{Binding TapEditAsyncCommand}" CommandParameter="{Binding Friend}" HorizontalOptions="FillAndExpand" />
+        <Button Text="Delete Student" Command="{Binding TapDeleteAsyncCommand}" CommandParameter="{Binding Friend}" HorizontalOptions="FillAndExpand" />
+
     </VerticalStackLayout>
 </ContentPage>
