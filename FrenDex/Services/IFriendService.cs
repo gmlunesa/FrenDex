@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FrenDex.Repositories
+namespace FrenDex.Services
 {
-    public interface IFriendRepository
+    public interface IFriendService
     {
         Task<int> AddAsync(Friend friend);
         Task<int> DeleteAsync(Friend friend);

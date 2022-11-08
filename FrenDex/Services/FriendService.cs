@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FrenDex.Repositories
+namespace FrenDex.Services
 {
-    public class FriendRepository : IFriendRepository
+    public class FriendService : IFriendService
     {
         private SQLiteAsyncConnection _dbConnection;
 

@@ -1,7 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using FrenDex.Models;
-using FrenDex.Repositories;
+using FrenDex.Services;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -17,9 +17,9 @@ namespace FrenDex.ViewModels
         [ObservableProperty]
         public Friend friend = new();
 
-        private readonly IFriendRepository _friendRepository;
+        private readonly IFriendService _friendRepository;
 
-        public AddUpdateFriendViewModel(IFriendRepository friendRepository)
+        public AddUpdateFriendViewModel(IFriendService friendRepository)
         {
             _friendRepository = friendRepository;
         }

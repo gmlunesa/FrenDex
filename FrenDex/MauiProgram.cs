@@ -1,4 +1,4 @@
-﻿using FrenDex.Repositories;
+﻿using FrenDex.Services;
 using FrenDex.ViewModels;
 using FrenDex.Views;
 
@@ -21,7 +21,7 @@ public static class MauiProgram
         #region Dependency Injections
 
 		// Services
-        builder.Services.AddSingleton<IFriendRepository, FriendRepository>();
+        builder.Services.AddSingleton<IFriendService, FriendService>();
 
         // Views
         builder.Services.AddSingleton<FriendListPage>();
