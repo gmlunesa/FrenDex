@@ -75,14 +75,14 @@
 
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout Orientation="Vertical"
-                                   ItemSpacing="5"/>
+                                   ItemSpacing="10"/>
             </CollectionView.ItemsLayout>
 
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:Friend">
-                        <StackLayout Padding="5,10">
+                        <StackLayout Padding="0,0">
                             <Border StrokeThickness="0" 
-                                    StrokeShape="RoundRectangle 20"
+                                    StrokeShape="RoundRectangle 10"
                                     HeightRequest="80" 
                                     BackgroundColor="{StaticResource CardBackgroundColor}">
 
@@ -92,20 +92,16 @@
 
                                 </Border.GestureRecognizers>
                                 <Grid RowDefinitions="60" 
-                                      ColumnDefinitions="Auto,*,Auto"
                                       Padding="15,0,15,0" 
                                       VerticalOptions="Center">
                                     <VerticalStackLayout Grid.Column="0" 
-                                                         VerticalOptions="Center" 
+                                                         VerticalOptions="Center"
                                                          Spacing="4">
                                         <Label Text="{Binding Nickname}" 
                                                Style="{StaticResource CardHeaderStyle}" />
                                         <Label Text="{Binding FullName}" 
                                                Style="{StaticResource CardHeaderSubtitleStyle}" />
                                     </VerticalStackLayout>
-                                    <Image Grid.Column="2" 
-                                           Source="arrow_right.svg" 
-                                           HeightRequest="18" />
                                 </Grid>
                             </Border>
                         </StackLayout>

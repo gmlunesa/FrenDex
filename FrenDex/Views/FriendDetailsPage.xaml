@@ -4,13 +4,18 @@
              x:Class="FrenDex.Views.FriendDetailsPage"
              xmlns:viewModels="clr-namespace:FrenDex.ViewModels"
              x:DataType="viewModels:FriendDetailsViewModel"
+             xmlns:local="clr-namespace:FrenDex.Converters"
              Title="FriendDetailsPage">
     <Shell.TitleView>
         <Label Text="" Style="{StaticResource PageHeaderStyle}" TextColor="White" IsVisible="False"/>
     </Shell.TitleView>
 
+    <ContentPage.Resources>
+        <local:StringToBulletListConverter x:Key="stringToBulletList" />
+    </ContentPage.Resources>
+
     <Grid
-        Margin="24,12,24,0"
+        Margin="12,0,12,0"
         IgnoreSafeArea="{OnPlatform Android=False, iOS=True}"
         ColumnDefinitions="*,*"
         RowDefinitions="*,Auto">
@@ -25,84 +30,104 @@
             Margin="0,0,0,0">
 
             <VerticalStackLayout
-                    Spacing="18">
+                    Spacing="10">
 
-                <Image
-                    WidthRequest="100"
-                    HeightRequest="100"
-                    Source="{Binding Friend.Avatar}">
-                    <Image.Clip>
-                        <EllipseGeometry
-                            Center="50,50"
-                            RadiusX="50"
-                            RadiusY="50"/>
-                    </Image.Clip>
-                </Image>
+                <Border Style="{StaticResource DetailBorderStyle}"
+                        Padding="20">
 
-                <Label Style="{StaticResource DetailsHeaderStyle}"
-                       Text="{Binding Friend.Nickname}"
-                       Margin="0,0,0,0"/>
+                    <Grid RowDefinitions="*,Auto,Auto">
+                        <Image
+                            WidthRequest="100"
+                            HeightRequest="100"
+                            Source="{Binding Friend.Avatar}">
+                            <Image.Clip>
+                                <EllipseGeometry
+                                    Center="50,50"
+                                    RadiusX="50"
+                                    RadiusY="50"/>
+                            </Image.Clip>
+                        </Image>
 
-                <Label Margin="0"
-                       Style="{StaticResource DetailsHeaderSubtitleStyle}"
-                       Text="{Binding Friend.FullName}" />
+                        <!-- Name -->
+                        <Label Style="{StaticResource DetailsHeaderStyle}"
+                               Text="{Binding Friend.Nickname}"
+                               Margin="0,5,0,0"
+                               Grid.Row="1"
+                               HorizontalTextAlignment="Center"/>
 
-                <Rectangle HorizontalOptions="Fill"
-                           HeightRequest="2"
-                           Stroke="Transparent"
-                           Fill="{StaticResource LightBorderColor}" />
+                        <Label Margin="0"
+                           Style="{StaticResource DetailsHeaderSubtitleStyle}"
+                           Text="{Binding Friend.FullName}"
+                               HorizontalTextAlignment="Center"
+                               Grid.Row="2"/>
+                    </Grid>
+
+                </Border>
+
+                <!-- Favorites -->
+                <Border Style="{StaticResource DetailProfileBorderStyle}">
+                    <StackLayout>
+                        <Label Style="{StaticResource DetailsSubHeaderStyle}"
+                               Text="💖 Favorites 💖" />
 
 
-                <Label Margin="0"
-                       Style="{StaticResource DetailsHeaderSubtitleStyle}"
-                       Text="💖" />
+                        <Label Style="{StaticResource DetailsTextStyle}"
+                               LineBreakMode="WordWrap"
+                               Text="{Binding Friend.Favorites, Converter={StaticResource stringToBulletList}, ConverterParameter='⋄' }" />
+                    </StackLayout>
+                </Border>
 
-                <Label Style="{StaticResource DetailsTextStyle}"
-                       LineBreakMode="WordWrap"
-                       Text="{Binding Friend.Favorites}" />
+                <!-- Likes -->
+                <Border Style="{StaticResource DetailProfileBorderStyle}">
 
-                <Label Margin="0"
-                       Style="{StaticResource DetailsHeaderSubtitleStyle}"
-                       Text="👍" />
+                    <StackLayout>
+                        <Label Style="{StaticResource DetailsSubHeaderStyle}"
+                               Text="👍 Likes 👍" />
 
-                <Label Style="{StaticResource DetailsTextStyle}"
-                       LineBreakMode="WordWrap"
-                       Text="{Binding Friend.Likes}" />
+                        <Label Style="{StaticResource DetailsTextStyle}"
+                               LineBreakMode="WordWrap"
+                               Text="{Binding Friend.Likes, Converter={StaticResource stringToBulletList}, ConverterParameter='⋄' }" />
+                    </StackLayout>
+                </Border>
 
-                <Rectangle HorizontalOptions="Fill"
-                           HeightRequest="1"
-                           Stroke="Transparent"
-                           Fill="{StaticResource LightBorderColor}" />
+                <!-- Hates -->
+                <Border Style="{StaticResource DetailProfileBorderStyle}">
 
-                <Label Margin="0"
-                       Style="{StaticResource DetailsHeaderSubtitleStyle}"
-                       Text="💢" />
+                    <StackLayout>
+                        <Label Style="{StaticResource DetailsSubHeaderStyle}"
+                               Text="💢 Hates 💢" />
 
-                <Label Style="{StaticResource DetailsTextStyle}" 
-                       LineBreakMode="WordWrap"
-                       Text="{Binding Friend.Hates}" />
+                        <Label Style="{StaticResource DetailsTextStyle}"
+                               LineBreakMode="WordWrap"
+                               Text="{Binding Friend.Hates, Converter={StaticResource stringToBulletList}, ConverterParameter='⋄' }" />
+                    </StackLayout>
+                </Border>
 
-                <Label Margin="0"
-                       Style="{StaticResource DetailsHeaderSubtitleStyle}"
-                       Text="👎" />
+                <!-- Dislikes -->
+                <Border Style="{StaticResource DetailProfileBorderStyle}">
 
-                <Label Style="{StaticResource DetailsTextStyle}"
-                       LineBreakMode="WordWrap"
-                       Text="{Binding Friend.Dislikes}" />
+                    <StackLayout>
+                        <Label Style="{StaticResource DetailsSubHeaderStyle}"
+                               Text="👎 Dislikes 👎" />
 
-                <Rectangle HorizontalOptions="Fill"
-                           HeightRequest="1"
-                           Stroke="Transparent"
-                           Fill="{StaticResource LightBorderColor}" />
+                        <Label Style="{StaticResource DetailsTextStyle}"
+                               LineBreakMode="WordWrap"
+                               Text="{Binding Friend.Dislikes, Converter={StaticResource stringToBulletList}, ConverterParameter='⋄' }" />
+                    </StackLayout>
+                </Border>
 
-                <Label Margin="0"
-                       Style="{StaticResource DetailsHeaderSubtitleStyle}" 
-                       Text="🤧" />
+                <!-- Allergies -->
+                <Border Style="{StaticResource DetailProfileBorderStyle}">
 
-                <Label Style="{StaticResource DetailsTextStyle}"
-                       LineBreakMode="WordWrap"
-                       Text="{Binding Friend.Allergies}" />
+                    <StackLayout>
+                        <Label Style="{StaticResource DetailsSubHeaderStyle}"
+                               Text="🤧 Allergies 🤧" />
 
+                        <Label Style="{StaticResource DetailsTextStyle}"
+                               LineBreakMode="WordWrap"
+                               Text="{Binding Friend.Allergies, Converter={StaticResource stringToBulletList}, ConverterParameter='⋄' }" />
+                    </StackLayout>
+                </Border>
             </VerticalStackLayout>
 
         </ScrollView>
@@ -116,6 +141,7 @@
             <Button Grid.Column="0" 
                     Text="Edit" 
                     Margin="0,5,5,10" 
+                    FontSize="Small"
                     Style="{StaticResource ButtonStyle}"
                     Command="{Binding TapEditAsyncCommand}" 
                     CommandParameter="{Binding Friend}" />
@@ -123,6 +149,7 @@
             <Button Grid.Column="1" 
                     Text="Delete" 
                     Margin="5,5,0,10"
+                    FontSize="Small"
                     Style="{StaticResource ButtonStyle}"
                     Command="{Binding TapDeleteAsyncCommand}" 
                     CommandParameter="{Binding Friend}" />

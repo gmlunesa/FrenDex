@@ -38,8 +38,8 @@
             <VerticalStackLayout>
                 <Label Text="Favorites" 
                        Style="{StaticResource FormLabelTextStyle}"/>
-                <Label Text="Please separate by comma." 
-                       Style="{StaticResource FormCaptionTextStyle}" />
+                <!--<Label Text="Please separate by comma." 
+                       Style="{StaticResource FormCaptionTextStyle}" />-->
                 <Editor Text="{Binding Friend.Favorites}" 
                         Placeholder="💖 Loves" 
                         Style="{StaticResource EditorStyle}" />
@@ -48,8 +48,8 @@
             <VerticalStackLayout>
                 <Label Text="Likes" 
                        Style="{StaticResource FormLabelTextStyle}"/>
-                <Label Text="Please separate by comma." 
-                       Style="{StaticResource FormCaptionTextStyle}" />
+                <!--<Label Text="Please separate by comma." 
+                       Style="{StaticResource FormCaptionTextStyle}" />-->
                 <Editor Text="{Binding Friend.Likes}" 
                         Placeholder="👍 Likes" 
                         Style="{StaticResource EditorStyle}" />
@@ -58,8 +58,8 @@
             <VerticalStackLayout>
                 <Label Text="Hates" 
                        Style="{StaticResource FormLabelTextStyle}"/>
-                <Label Text="Please separate by comma." 
-                       Style="{StaticResource FormCaptionTextStyle}" />
+                <!--<Label Text="Please separate by comma." 
+                       Style="{StaticResource FormCaptionTextStyle}" />-->
                 <Editor Text="{Binding Friend.Hates}" 
                         Placeholder="💢 Hates" 
                         Style="{StaticResource EditorStyle}" />
@@ -68,8 +68,8 @@
             <VerticalStackLayout>
                 <Label Text="Dislikes" 
                        Style="{StaticResource FormLabelTextStyle}"/>
-                <Label Text="Please separate by comma." 
-                       Style="{StaticResource FormCaptionTextStyle}" />
+                <!--<Label Text="Please separate by comma." 
+                       Style="{StaticResource FormCaptionTextStyle}" />-->
                 <Editor Text="{Binding Friend.Dislikes}" 
                         Placeholder="👎 Dislikes" 
                         Style="{StaticResource EditorStyle}" />
@@ -78,8 +78,8 @@
             <VerticalStackLayout>
                 <Label Text="Allergies" 
                        Style="{StaticResource FormLabelTextStyle}"/>
-                <Label Text="Please separate by comma." 
-                       Style="{StaticResource FormCaptionTextStyle}" />
+                <!--<Label Text="Please separate by comma." 
+                       Style="{StaticResource FormCaptionTextStyle}" />-->
                 <Editor Text="{Binding Friend.Allergies}" 
                         Placeholder="🤧 Allergies" 
                         Style="{StaticResource EditorStyle}" />

@@ -9,7 +9,7 @@
         <Color x:Key="PageBackgroundColor">#2e163b</Color>
         <Color x:Key="CardBackgroundColor">#3d214b</Color>
         <Color x:Key="LightBackgroundColor">#552f69</Color>
-        <Color x:Key="ButtonBackgroundColor">#F43F5E</Color>
+        <Color x:Key="ButtonBackgroundColor">#D32F2F</Color>
         <Color x:Key="BorderColor">Transparent</Color>
         <Color x:Key="LightBorderColor">#d5d5d5</Color>
         <Color x:Key="LightAccentColor">#725e7d</Color>
@@ -59,7 +59,7 @@
             <Setter Property="Padding" Value="15" />
             <Setter Property="TextColor" Value="White" />
             <Setter Property="FontFamily" Value="MediumFont" />
-            <Setter Property="CornerRadius" Value="14" />
+            <Setter Property="CornerRadius" Value="10" />
             <Setter Property="BackgroundColor" Value="{StaticResource ButtonBackgroundColor}" />
             <Setter Property="BorderWidth" Value="0" />
             <Setter Property="BorderColor" Value="{StaticResource BorderColor}" />
@@ -86,7 +86,7 @@
         </Style>
 
         <Style TargetType="Label" x:Key="PageHeaderStyle" BasedOn="{StaticResource BaseBoldLabelStyle}">
-            <Setter Property="FontSize" Value="32" />
+            <Setter Property="FontSize" Value="30" />
             <Setter Property="TextColor" Value="White" />
         </Style>
 
@@ -116,22 +116,29 @@
         </Style>
 
         <Style TargetType="Label" x:Key="DetailsHeaderStyle" BasedOn="{StaticResource BaseBoldLabelStyle}">
-            <Setter Property="FontSize" Value="48" />
+            <Setter Property="FontSize" Value="32" />
             <Setter Property="TextColor" Value="{StaticResource LightTextColor}" />
         </Style>
 
         <Style TargetType="Label" x:Key="DetailsHeaderSubtitleStyle" BasedOn="{StaticResource BaseRegularLabelStyle}">
-            <Setter Property="FontSize" Value="22" />
-            <Setter Property="TextColor" Value="{StaticResource LightTextColor}" />
-        </Style>
-
-        <Style TargetType="Label" x:Key="DetailsTextStyle" BasedOn="{StaticResource BaseRegularLabelStyle}">
             <Setter Property="FontSize" Value="16" />
             <Setter Property="TextColor" Value="{StaticResource LightTextColor}" />
         </Style>
 
-        <Style TargetType="Label" x:Key="FormLabelTextStyle" BasedOn="{StaticResource BaseMediumLabelStyle}">
-            <Setter Property="FontSize" Value="Medium" />
+        <Style TargetType="Label" x:Key="DetailsSubHeaderStyle" BasedOn="{StaticResource BaseBoldLabelStyle}">
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="Margin" Value="2,0,0,10" />
+            <Setter Property="TextColor" Value="{StaticResource LightTextColor}" />
+        </Style>
+
+        <Style TargetType="Label" x:Key="DetailsTextStyle" BasedOn="{StaticResource BaseRegularLabelStyle}">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="LineHeight" Value="1.2" />
+            <Setter Property="TextColor" Value="{StaticResource LightTextColor}" />
+        </Style>
+
+        <Style TargetType="Label" x:Key="FormLabelTextStyle" BasedOn="{StaticResource BaseBoldLabelStyle}">
+            <Setter Property="FontSize" Value="Body" />
             <Setter Property="TextColor" Value="{StaticResource LightTextColor}" />
         </Style>
 
@@ -158,6 +165,25 @@
             <Setter Property="HeightRequest" Value="100" />
             <Setter Property="MinimumWidthRequest" Value="350" />
             <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+        </Style>
+        
+        <!--Border-->
+
+
+        <Style TargetType="Border" x:Key="DetailBorderStyle">
+            <Setter Property="StrokeThickness" Value="4" />
+            <Setter Property="Stroke" Value="{StaticResource CardBackgroundColor}" />
+            <Setter Property="StrokeShape" Value="RoundRectangle 10" />
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="Padding" Value="15" />
+        </Style>
+
+        <Style TargetType="Border" x:Key="DetailProfileBorderStyle">
+            <Setter Property="StrokeThickness" Value="0" />
+            <Setter Property="Stroke" Value="{StaticResource CardBackgroundColor}" />
+            <Setter Property="StrokeShape" Value="RoundRectangle 10" />
+            <Setter Property="BackgroundColor" Value="{StaticResource CardBackgroundColor}" />
+            <Setter Property="Padding" Value="15" />
         </Style>
 
     </Application.Resources>
